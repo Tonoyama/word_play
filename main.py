@@ -1,6 +1,14 @@
 import jaconv
 
 def kana2vowel(text):
+    """
+    カタカナを母音に変換するユーザー関数。
+
+    Returns
+    ---------
+    text : string
+        母音に変換したカタカナの文字列
+    """
     #大文字とゥの変換リスト
     large_tone = {
         'ア' :'ア', 'イ' :'イ', 'ウ' :'ウ', 'エ' :'エ', 'オ' :'オ',
@@ -66,30 +74,32 @@ def kana2vowel(text):
 
     return text
 
+# try~except文。KeyboardInterruptでCtrl+C押されるまでwhile True
 try:
     while True:
+        # input()で標準入力
         input_val = input("なんか言ってみて：")
+        #文字種変換ライブラリjaconvでひらがな->カタカナ
         kata_val = jaconv.hira2kata(input_val)
+        #kana2vowel関数(ユーザー関数)でカタカナから母音に変換
         hira_val = kana2vowel(kata_val)
         #print(hira_val)
 
-        ld = open("/home/yudai/Dev/ML/word_play/boin.txt")
-        lines = ld.readlines()
-        ld.close()
-
-        for line in lines:
-            if line.find(hira_val) >= 0:
-                line[:-1]
-
+        # ファイル内の特定文字を見つける
         with open('/home/yudai/Dev/ML/word_play/boin.txt') as fin:
-            for row, text in enumerate(fin, start=1):
+            for row, text in enumerate(fin):
+                # 文字列の末尾の\nを除去(replaceでも可)
                 text = text.rstrip()
+                #解析した母音と一致するテキストを見つける
                 if text == hira_val:
+                    # 母音と一致する行数
                     dst_row = row
-                    #print(dst_row)
+
 
         with open("/home/yudai/Dev/ML/word_play/goi.txt") as f:
-            data = f.readlines()[dst_row-1]
+            # goi.txtで見つけた行を読み込む
+            data = f.readlines()[dst_row]
+            # 2行目以降から\nが含まれるのでreplace()で除去
             data = data.replace("\n", "")
         print(data + "？\n")
 except KeyboardInterrupt:
