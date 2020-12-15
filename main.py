@@ -1,6 +1,11 @@
 import jaconv
 import kana2vowel
 
+"""
+適当な文字列（ひらがな）が入力されたら、母音に変換。
+解析した母音とboin.txtにある母音が一致する場合、行数を取得。
+goi.txtから取得した行数にある文字を表示。
+"""
 # try~except文。KeyboardInterruptでCtrl+C押されるまでwhile True
 try:
     while True:
