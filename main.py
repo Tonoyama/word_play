@@ -8,7 +8,7 @@ try:
         input_val = input("なんか言ってみて：")
         #文字種変換ライブラリjaconvでひらがな->カタカナ
         kata_val = jaconv.hira2kata(input_val)
-        #kana2vowel関数(ユーザー関数)でカタカナから母音に変換
+        #kana2vowel.pyのkana2vowel関数(ユーザー関数)でカタカナから母音に変換
         hira_val = kana2vowel.kana2vowel(kata_val)
         #print(hira_val)
 
