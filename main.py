@@ -12,9 +12,13 @@ try:
         hira_val = kana2vowel.kana2vowel(kata_val)
         #print(hira_val)
 
-        # ファイル内の特定文字を見つける
-        with open('/home/yudai/Dev/ML/word_play/boin.txt') as fin:
-            for row, text in enumerate(fin):
+        """
+        ファイル内の特定文字を見つける
+        """
+        #boin.txtを開く
+        with open('./boin.txt') as f:
+            #enumerate()でインデックスと要素の両方を取り出す
+            for row, text in enumerate(f):
                 # 文字列の末尾の\nを除去(replaceでも可)
                 text = text.rstrip()
                 #解析した母音と一致するテキストを見つける
@@ -22,8 +26,11 @@ try:
                     # 母音と一致する行数
                     dst_row = row
 
-
-        with open("/home/yudai/Dev/ML/word_play/goi.txt") as f:
+        """
+        指定された行のテキストを表示する
+        """
+        #goi.txtを開く
+        with open("./goi.txt") as f:
             # goi.txtで見つけた行を読み込む
             data = f.readlines()[dst_row]
             # 2行目以降から\nが含まれるのでreplace()で除去
