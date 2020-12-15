@@ -30,6 +30,9 @@ try:
                 if text == hira_val:
                     # 母音と一致する行数
                     dst_row = row
+                else:
+                    #それ以外の場合無視
+                    pass
 
         """
         指定された行のテキストを表示する
