@@ -1,0 +1,5 @@
+jaconv
+pykakasi
+SpeechRecognition
+portaudio
+pyaudio
